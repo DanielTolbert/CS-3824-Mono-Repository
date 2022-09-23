@@ -39,13 +39,13 @@ public class DijkstraHandler {
             dijkstra.init( current );
             int rank = 1;
             for ( Node sourceNode : value.getSourceNodes() ) {
+                dijkstra.setSource( current.getNode( sourceNode.getNodeSymbol() ) );
+                dijkstra.compute();
                 for ( Node sinkNode : value.getSinkNodes() ) {
-                    dijkstra.setSource( current.getNode( sinkNode.getNodeSymbol() ) );
-                    dijkstra.compute();
-                    double length = dijkstra.getPathLength( current.getNode(sourceNode.getNodeSymbol()) );
+                    double length = dijkstra.getPathLength( current.getNode(sinkNode.getNodeSymbol()) );
                     StringBuilder sb = new StringBuilder(  );
                     sb.append( String.format( "%s\t%s ", rank, length ) );
-                    Collection<org.graphstream.graph.Node> l = dijkstra.getPath( current.getNode( sourceNode.getNodeSymbol() ) ).getNodeSet();
+                    Collection<org.graphstream.graph.Node> l = dijkstra.getPath( current.getNode( sinkNode.getNodeSymbol() ) ).getNodeSet();
                     value.getShortestPaths().add( new GraphPath( l ) );
                     if ( !l.isEmpty() ) {
                         for ( org.graphstream.graph.Node node : l ) {

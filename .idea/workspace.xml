@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d78d1d8-c3ce-416e-9ae2-319cf5d847c4" name="Default Changelist" comment="" />
+    <list default="true" id="3d78d1d8-c3ce-416e-9ae2-319cf5d847c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Ranked Edges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Shortest Paths.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Shortest Paths.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TNFalpha Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TNFalpha Ranked Edges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/Wnt Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/Wnt Ranked Edges.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/DijkstraHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/GraphDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/GraphPath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/MyGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathLinkerResults.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathParser$PathType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Plotter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/RWRHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Pathways/RWRHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DijkstraHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraHandler.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,12 +36,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2Ej4kM7Q8UTIAXCBtHx01vUYa5V" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/jzy3d-jdt-core-2.2.1-20220808.134442-1-sources.jar!/" />
@@ -266,12 +291,23 @@
       <workItem from="1663190249737" duration="11238000" />
       <workItem from="1663608237477" duration="2886000" />
       <workItem from="1663702399265" duration="29557000" />
-      <workItem from="1663862689686" duration="28591000" />
+      <workItem from="1663862689686" duration="28839000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

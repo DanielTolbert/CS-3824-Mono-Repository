@@ -2,25 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d78d1d8-c3ce-416e-9ae2-319cf5d847c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Ranked Edges.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Shortest Paths.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Shortest Paths.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DijkstraResults/TNFalpha Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/TNFalpha Ranked Edges.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DijkstraResults/Wnt Ranked Edges.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DijkstraResults/Wnt Ranked Edges.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/DijkstraHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Edge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/GraphDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/GraphPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/MyGraph.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathLinkerResults.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathParser$PathType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/PathParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/Plotter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/RWRHandler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Pathways/RWRHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/EGFR1 Ranked Edges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/EGFR1 Shortest Paths.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Ranked Edges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TGF_beta_Receptor Shortest Paths.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TNFalpha Ranked Edges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/TNFalpha Shortest Paths.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/Wnt Ranked Edges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DijkstraResults/Wnt Shortest Paths.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/DijkstraHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/DijkstraHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/GraphDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/GraphDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/GraphPath.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/GraphPath.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/MyGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/MyGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathLinkerResults.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathLinkerResults.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathParser$PathType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathParser$PathType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/PathParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/RWRHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/RWRHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/RWRHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Human Protein Network Reconstruction/RWRHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DijkstraHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EdgeWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GraphPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GraphPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PathLinkerResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PathLinkerResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PathParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PathParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RWRHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RWRHandler.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,180 +105,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.FlaskServer">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <module name="Human Protein Network Reconstruction" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GraphDisplay" />
@@ -291,7 +127,8 @@
       <workItem from="1663190249737" duration="11238000" />
       <workItem from="1663608237477" duration="2886000" />
       <workItem from="1663702399265" duration="29557000" />
-      <workItem from="1663862689686" duration="28839000" />
+      <workItem from="1663862689686" duration="40788000" />
+      <workItem from="1663960941902" duration="624000" />
     </task>
     <servers />
   </component>
@@ -303,7 +140,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -314,43 +153,53 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphDisplay.java</url>
-          <line>39</line>
+          <line>33</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/DijkstraHandler.java</url>
-          <line>103</line>
+          <line>101</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphDisplay.java</url>
-          <line>42</line>
+          <line>36</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/RWRHandler.java</url>
-          <line>49</line>
+          <line>104</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/PathParser.java</url>
-          <line>69</line>
+          <line>78</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphDisplay.java</url>
-          <line>113</line>
+          <line>120</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphDisplay.java</url>
-          <line>92</line>
+          <line>100</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/DijkstraHandler.java</url>
-          <line>23</line>
+          <line>21</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/RWRHandler.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/RWRHandler.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -361,6 +210,9 @@
         <watch expression="PathParser.PathType.EGFR1.getGraph()" language="JAVA" custom="PathParser" />
         <watch expression="PathParser.PathType.EGFR1.getDijkstraHandler()" language="JAVA" custom="PathParser" />
         <watch expression="value.getGraph()" language="JAVA" />
+        <watch expression="adjacencyMatrix[sourceIdx][targetIndex]" language="JAVA" />
+        <watch expression="adjacencyMatrix[1][2]" language="JAVA" />
+        <watch expression="D.invert()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

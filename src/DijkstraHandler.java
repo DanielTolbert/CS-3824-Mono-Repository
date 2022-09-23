@@ -1,6 +1,5 @@
 import org.graphstream.algorithm.Dijkstra;
 import org.graphstream.graph.Graph;
-import scala.collection.parallel.ParIterableLike;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,12 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.stream.Collectors;
 
 public class DijkstraHandler {
 
     private int uniqueEdges = 0;
-    private HashSet<Edge> uniqueRankedEdges;
+    private HashSet<EdgeWrapper> uniqueRankedEdgeWrappers;
 
     private Double[] precision;
     private Double[] recall;
@@ -35,7 +33,7 @@ public class DijkstraHandler {
             FileWriter fileWriter = new FileWriter( file );
             fileWriter.write( "#KSP\tpath_length path\n" );
             Graph current = value.getGraph();
-            Dijkstra dijkstra = new Dijkstra( Dijkstra.Element.EDGE, null, "weight");
+            Dijkstra dijkstra = new Dijkstra( Dijkstra.Element.EDGE, "length", "weight");
             dijkstra.init( current );
             int rank = 1;
             for ( Node sourceNode : value.getSourceNodes() ) {
@@ -63,11 +61,11 @@ public class DijkstraHandler {
     }
 
     public void createRankedEdges(  ) {
-        uniqueRankedEdges = new HashSet<>(  );
+        uniqueRankedEdgeWrappers = new HashSet<>(  );
         for ( GraphPath shortestPath : value.getShortestPaths() ) {
-            uniqueRankedEdges.addAll( shortestPath.getEdges() );
+            uniqueRankedEdgeWrappers.addAll( shortestPath.getEdgeWrappers() );
         }
-        uniqueEdges = uniqueRankedEdges.size();
+        uniqueEdges = uniqueRankedEdgeWrappers.size();
         //file creation
         try {
             File rankedEdgesFile = new File( String.format("DijkstraResults\\%s Ranked Edges.txt", value.getName()) );
@@ -76,8 +74,8 @@ public class DijkstraHandler {
             FileWriter fileWriter = new FileWriter( rankedEdgesFile );
             fileWriter.write( String.format( "#tail\thead\tKSP index\n" ) );
             int rank = 1;
-            for ( Edge uniqueRankedEdge : uniqueRankedEdges ) {
-                fileWriter.write( String.format( "%s\t%s\t%s\n", uniqueRankedEdge.tailID, uniqueRankedEdge.headID, rank ) );
+            for ( EdgeWrapper uniqueRankedEdgeWrapper : uniqueRankedEdgeWrappers ) {
+                fileWriter.write( String.format( "%s\t%s\t%s\n", uniqueRankedEdgeWrapper.tailID, uniqueRankedEdgeWrapper.headID, rank ) );
                 rank++;
             }
         } catch ( Exception e ) {
@@ -87,10 +85,10 @@ public class DijkstraHandler {
     }
 
     public void computeDijkstraPrecisionAndRecall(  ) {
-        recall = new Double[uniqueRankedEdges.size()];
-        precision = new Double[uniqueRankedEdges.size()];
+        recall = new Double[uniqueRankedEdgeWrappers.size()];
+        precision = new Double[uniqueRankedEdgeWrappers.size()];
         int truePositives = 0;
-        ArrayList<Edge> rankedEdgesAsArray = new ArrayList<>( uniqueRankedEdges );
+        ArrayList<EdgeWrapper> rankedEdgesAsArray = new ArrayList<>( uniqueRankedEdgeWrappers );
         for ( int i = 0; i < value.getShortestPaths().size() && i < rankedEdgesAsArray.size(); i++ ) {
             if ( value.getShortestPaths().get( i ).containsEdge( rankedEdgesAsArray.get( i ) ) ) {
                 truePositives++;

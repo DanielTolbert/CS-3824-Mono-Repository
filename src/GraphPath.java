@@ -1,13 +1,11 @@
 import org.graphstream.graph.Node;
-import scala.util.parsing.combinator.testing.Str;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 public class GraphPath {
 
-    private ArrayList<Edge> edges;
+    private ArrayList<EdgeWrapper> edgeWrappers;
     private String[] nodeIDs;
 
     public GraphPath(String...nodeIDs) {
@@ -25,24 +23,24 @@ public class GraphPath {
     }
 
     private void constructEdges() {
-        edges = new ArrayList<>(  );
+        edgeWrappers = new ArrayList<>(  );
         for ( int i = 0; i < nodeIDs.length - 1; i++ ) {
-            edges.add( new Edge( nodeIDs[i], nodeIDs[i + 1] ) );
+            edgeWrappers.add( new EdgeWrapper( nodeIDs[i], nodeIDs[i + 1] ) );
         }
     }
 
-    public boolean containsEdge(Edge e) {
+    public boolean containsEdge( EdgeWrapper e) {
         boolean found = false;
-        for ( Edge edge : edges ) {
-            if ( edge.equals( e ) ) {
+        for ( EdgeWrapper edgeWrapper : edgeWrappers ) {
+            if ( edgeWrapper.equals( e ) ) {
                 found = true;
             }
         }
         return found;
     }
 
-    public ArrayList<Edge> getEdges() {
-        return edges;
+    public ArrayList<EdgeWrapper> getEdgeWrappers() {
+        return edgeWrappers;
     }
 
 }

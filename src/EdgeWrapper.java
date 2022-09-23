@@ -1,8 +1,13 @@
-public class Edge {
+import org.graphstream.graph.Edge;
+
+public class EdgeWrapper {
     String tailID, headID, pathwayName, edgeType, tailSymbol, headSymbol;
     int weight, pathwayID;
+    double flux;
 
-    public Edge( String tailID, String headID, String pathwayName, String edgeType, String tailSymbol, String headSymbol, int weight, int pathwayID ) {
+    private Edge actualEdge;
+
+    public EdgeWrapper( String tailID, String headID, String pathwayName, String edgeType, String tailSymbol, String headSymbol, int weight, int pathwayID ) {
         this.tailID = tailID;
         this.headID = headID;
         this.pathwayName = pathwayName;
@@ -13,9 +18,17 @@ public class Edge {
         this.pathwayID = pathwayID;
     }
 
-    public Edge(String tailID, String headID) {
+    public EdgeWrapper( String tailID, String headID) {
         this.tailID = tailID;
         this.headID = headID;
+    }
+
+    public EdgeWrapper(Edge edge) {
+        this.actualEdge = edge;
+    }
+
+    public Edge getActualEdge() {
+        return actualEdge;
     }
 
     public String getTailID() {
@@ -52,9 +65,18 @@ public class Edge {
 
     @Override
     public boolean equals( Object o ) {
-        if ( ! (o instanceof Edge) ) return false;
-        Edge other = ((Edge)o);
+        if ( ! (o instanceof EdgeWrapper ) ) return false;
+        EdgeWrapper other = (( EdgeWrapper )o);
         return other.tailID.equals( this.tailID ) && other.headID.equals( this.headID );
+    }
+
+    public double getFlux() {
+        return flux;
+    }
+
+    public EdgeWrapper setFlux( double flux ) {
+        this.flux = flux;
+        return this;
     }
 
     public Node getHeadNode() {

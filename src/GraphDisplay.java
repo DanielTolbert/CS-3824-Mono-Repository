@@ -1,9 +1,7 @@
-import org.graphstream.algorithm.Dijkstra;
 import org.graphstream.graph.Graph;
 import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataset;
@@ -13,10 +11,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class GraphDisplay {
@@ -40,23 +34,33 @@ public class GraphDisplay {
     }
 
     public static void main( String[] args ) {
-//        constructAllGraphs();
-//        for ( PathParser.PathType value : PathParser.PathType.values() ) {
-//        }
         showPrecisionAndRecall();
-//        setup( PathParser.PathType.WNT );
         outputShortestPaths();
         showPrecisionAndRecallShortestPaths();
-//        outputFluxes();
+        plotRWR();
 
     }
 
-    private static void outputFluxes() {
+    private static void plotRWR() {
+        JFreeChart chart = ChartFactory.createScatterPlot( "Precision and Recall: RWR", "Recall", "Precision", outputFluxesAndGraph(), PlotOrientation.VERTICAL, true, true, false );
+        Plotter.main( new String[]{""}, chart );
+    }
+
+    private static XYSeriesCollection outputFluxesAndGraph() {
+        XYSeriesCollection data = new XYSeriesCollection(  );
         for ( PathParser.PathType value : PathParser.PathType.values() ) {
-            if ( value != PathParser.PathType.EGFR1 ) {
                 RWRHandler handler = new RWRHandler( value );
-            }
+                XYSeries series = new XYSeries( value.getName() );
+                for ( int i = 0; i < value.getRwrFluxMappedEdges().size(); i++ ) {
+                    double precision = handler.getPrecision(i);
+                    double recall = handler.getRecall(i);
+                    if ( precision <= 1 && recall <= 1 ) {
+                        series.add( recall, precision );
+                    }
+                }
+                data.addSeries( series );
         }
+        return data;
     }
 
     private static void showPrecisionAndRecallShortestPaths() {
@@ -104,7 +108,6 @@ public class GraphDisplay {
                 if ( !pathType.getPathLinkerResults().getRankedEdges().get( i ).isEmpty() ) {
                     double precision = pathType.getPathLinkerResults().getPrecision( i );
                     double recall = pathType.getPathLinkerResults().getRecall( i );
-//                    System.out.printf( "%s, %s\n", recall, precision );
                     if ( precision <= 1 && recall <= 1 ) {
                         series.add( recall, precision );
 
@@ -142,8 +145,6 @@ public class GraphDisplay {
         jPanel.add(view_panel);
 
         view_panel.addMouseWheelListener( mwe -> GraphDisplay.zoomGraphMouseWheelMoved(mwe, view_panel) );
-//        ChartPanel panel = new ChartPanel( chart );
-//        jFrame.add( panel );
         jFrame.setVisible( true );
 
     }

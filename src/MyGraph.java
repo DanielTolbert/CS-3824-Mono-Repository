@@ -10,9 +10,9 @@ public class MyGraph {
         graph.put( node.nodeNumber, node );
     }
 
-    public static void addEdge( Edge edge) {
-        edge.getHeadNode().appendIncomingNeighbor( edge.getTailNode(), edge );
-        edge.getTailNode().appendOutgoingNeighbor( edge.getHeadNode(), edge );
+    public static void addEdge( EdgeWrapper edgeWrapper ) {
+        edgeWrapper.getHeadNode().appendIncomingNeighbor( edgeWrapper.getTailNode(), edgeWrapper );
+        edgeWrapper.getTailNode().appendOutgoingNeighbor( edgeWrapper.getHeadNode(), edgeWrapper );
     }
     public static Node getNode(String identifier) {
         return graph.get( identifier );

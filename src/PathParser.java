@@ -19,6 +19,7 @@ public class PathParser {
         ArrayList<Node> sourceNodes = new ArrayList<>(  );
         ArrayList<Node> sinkNodes = new ArrayList<>(  );
         ArrayList<GraphPath> shortestPaths = new ArrayList<>(  );
+        ArrayList<EdgeWrapper> rwrFluxMappedEdges = new ArrayList<>(  );
 
         PathType( String name ) {
             this.name = name;
@@ -63,6 +64,14 @@ public class PathParser {
         public PathType setDijkstraHandler( DijkstraHandler dijkstraHandler ) {
             this.dijkstraHandler = dijkstraHandler;
             return this;
+        }
+
+        public ArrayList<EdgeWrapper> getRwrFluxMappedEdges() {
+            return rwrFluxMappedEdges;
+        }
+
+        public void setRwrFluxMappedEdges(ArrayList<EdgeWrapper> rwrFluxMappedEdges) {
+            this.rwrFluxMappedEdges = rwrFluxMappedEdges;
         }
     }
 
@@ -118,11 +127,11 @@ public class PathParser {
                 tailSymbol = nodeInfo[5];
                 headSymbol = nodeInfo[6];
             }
-            Edge edge = new Edge( tailID, headID, pathwayName, edgeType, tailSymbol, headSymbol, weight, pathwayID );
-            MyGraph.addEdge( edge );
+            EdgeWrapper edgeWrapper = new EdgeWrapper( tailID, headID, pathwayName, edgeType, tailSymbol, headSymbol, weight, pathwayID );
+            MyGraph.addEdge( edgeWrapper );
             if(edgeType.equalsIgnoreCase( "physical" )) {
-                Edge secondEdge = new Edge(  headID, tailID, pathwayName, edgeType, headSymbol, tailSymbol, weight, pathwayID  );
-                MyGraph.addEdge(secondEdge);
+                EdgeWrapper secondEdgeWrapper = new EdgeWrapper(  headID, tailID, pathwayName, edgeType, headSymbol, tailSymbol, weight, pathwayID  );
+                MyGraph.addEdge( secondEdgeWrapper );
             }
         }
     }

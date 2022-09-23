@@ -1,12 +1,10 @@
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class Node {
 
     String nodeNumber, nodeType, nodeSymbol;
-    HashMap<Node, Edge> incomingNeighbors;
-    HashMap<Node, Edge> outgoingNeighbors;
+    HashMap<Node, EdgeWrapper> incomingNeighbors;
+    HashMap<Node, EdgeWrapper> outgoingNeighbors;
 
     public Node(String nodeNumber, String nodeType, String nodeSymbol) {
         this.nodeNumber = nodeNumber;
@@ -16,20 +14,20 @@ public class Node {
         this.outgoingNeighbors = new HashMap<>(  );
     }
 
-    public HashMap<Node, Edge> getIncomingNeighbors() {
+    public HashMap<Node, EdgeWrapper> getIncomingNeighbors() {
         return incomingNeighbors;
     }
 
-    public HashMap<Node, Edge> getOutgoingNeighbors() {
+    public HashMap<Node, EdgeWrapper> getOutgoingNeighbors() {
         return outgoingNeighbors;
     }
 
-    public void appendIncomingNeighbor(Node node, Edge edge) {
-        incomingNeighbors.put( node, edge );
+    public void appendIncomingNeighbor(Node node, EdgeWrapper edgeWrapper ) {
+        incomingNeighbors.put( node, edgeWrapper );
     }
 
-    public void appendOutgoingNeighbor(Node node, Edge edge) {
-        outgoingNeighbors.put( node, edge );
+    public void appendOutgoingNeighbor(Node node, EdgeWrapper edgeWrapper ) {
+        outgoingNeighbors.put( node, edgeWrapper );
     }
 
     public String getNodeNumber() {

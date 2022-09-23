@@ -10,7 +10,7 @@ public class PathLinkerResults {
     private File rankedEdgesFile;
     private File pathsFile;
 
-    private ArrayList<ArrayList<Edge>> rankedEdges;
+    private ArrayList<ArrayList<EdgeWrapper>> rankedEdges;
     private ArrayList<ArrayList<GraphPath>> graphPaths;
     private Double[] recall;
     private Double[] precision;
@@ -46,20 +46,20 @@ public class PathLinkerResults {
                 while(rankedEdges.size() <= rank - 1) {
                     rankedEdges.add( new ArrayList<>(  ) );
                 }
-                rankedEdges.get( rank - 1 ).add( new Edge( info[0], info[1] ) );
+                rankedEdges.get( rank - 1 ).add( new EdgeWrapper( info[0], info[1] ) );
             }
         }
     }
 
 
     private int getDistinctTotalEdges() {
-        Set<Edge> edgeSet = new HashSet<>(  );
+        Set<EdgeWrapper> edgeWrapperSet = new HashSet<>(  );
         for ( ArrayList<GraphPath> graphPath : graphPaths ) {
             for ( GraphPath path : graphPath ) {
-                edgeSet.addAll( path.getEdges() );
+                edgeWrapperSet.addAll( path.getEdgeWrappers() );
             }
         }
-        return edgeSet.size();
+        return edgeWrapperSet.size();
     }
 
     public void parsePathsFile() {
@@ -96,9 +96,9 @@ public class PathLinkerResults {
                 precision[i] = Double.NaN;
                 continue;
             }
-            for ( Edge edge : rankedEdges.get( i ) ) {
+            for ( EdgeWrapper edgeWrapper : rankedEdges.get( i ) ) {
                 for ( GraphPath graphPath : graphPaths.get( i ) ) {
-                    if ( graphPath.containsEdge( edge ) ) {
+                    if ( graphPath.containsEdge( edgeWrapper ) ) {
                         truePositives++;
                     }
                 }
@@ -117,7 +117,7 @@ public class PathLinkerResults {
         return precision[rank];
     }
 
-    public ArrayList<ArrayList<Edge>> getRankedEdges() {
+    public ArrayList<ArrayList<EdgeWrapper>> getRankedEdges() {
         return rankedEdges;
     }
 

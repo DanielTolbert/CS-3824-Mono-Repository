@@ -10,17 +10,66 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RWRHandler {
 
     private PathParser.PathType pathType;
     private double[][] adjacencyMatrix;
+    private double[] precision;
+    private double[] recall;
 
     public RWRHandler( PathParser.PathType pathType ) {
         this.pathType = pathType;
         convertGraphToAdjacencyMatrix();
-        outputFlux();
+        readFluxFromFiles();
+        computeRWRPrecisionAndRecall();
+    }
+
+    private void computeRWRPrecisionAndRecall() {
+        precision = new double[pathType.getRwrFluxMappedEdges().size()];
+        recall = new double[pathType.getRwrFluxMappedEdges().size()];
+        int truePositives = 0;
+        int i = 0;
+        for ( EdgeWrapper rwrFluxMappedEdge : pathType.getRwrFluxMappedEdges() ) {
+            if ( i >= pathType.getRwrFluxMappedEdges().size() ) break;
+            Edge current  = pathType.getGraph().getEdge( String.format( "%s%s", rwrFluxMappedEdge.getTailID(), rwrFluxMappedEdge.getHeadID() ));
+            if ( current != null ) {
+                truePositives++;
+            }
+            recall[i] = ((double)truePositives)/pathType.getRwrFluxMappedEdges().size();
+            precision[i] = ((double)truePositives)/i;
+            i++;
+        }
+    }
+
+    public double getPrecision(int idx) {
+        return precision[idx];
+    }
+
+    public double getRecall(int idx) {
+        return recall[idx];
+    }
+
+    private void readFluxFromFiles() {
+
+        File file = new File( String.format( "RWRResults/%s edge fluxes.txt", pathType.getName() ) );
+        ArrayList<EdgeWrapper> fluxMap = new ArrayList<>(  );
+        try {
+            Scanner scanner = new Scanner( file );
+            String header = scanner.nextLine();
+            while ( scanner.hasNext() ) {
+                String[] info = scanner.nextLine().split( "\\s+" );
+                EdgeWrapper edgeWrapper = new EdgeWrapper( info[0], info[1] );
+                edgeWrapper.setFlux( Double.parseDouble(info[2]) );
+                fluxMap.add( edgeWrapper );
+            }
+
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+        pathType.setRwrFluxMappedEdges( fluxMap );
     }
 
     private void convertGraphToAdjacencyMatrix() {
@@ -30,10 +79,15 @@ public class RWRHandler {
 
         for ( int i = 0; i < dimension; i++ ) {
             for ( int i1 = 0; i1 < dimension; i1++ ) {
-                adjacencyMatrix[i][i1] = g.getNode( i ).hasEdgeBetween( i1 ) ? 1 : 0;
-                System.out.println(adjacencyMatrix[i][i1]);
+                adjacencyMatrix[i][i1] = 0;
             }
         }
+        for ( Edge edge : g.getEdgeSet() ) {
+            int sourceIdx = edge.getSourceNode().getIndex();
+            int targetIndex = edge.getTargetNode().getIndex();
+            adjacencyMatrix[sourceIdx][targetIndex] = 1;
+        }
+
     }
 
     private double[][] computeDiagonalMatrix() {
@@ -44,6 +98,7 @@ public class RWRHandler {
                 diagonalMatrix[i][i1] = 0;
                 if ( ! (i1 == i) ) rowSum += adjacencyMatrix[i][i1];
             }
+            if ( rowSum == 2 ) rowSum--;
             diagonalMatrix[i][i] = rowSum;
 //            System.out.println(diagonalMatrix[i][i]);
         }
@@ -53,7 +108,6 @@ public class RWRHandler {
     public SimpleMatrix computeInverseMultiply() {
         SimpleMatrix A = new SimpleMatrix( adjacencyMatrix );
         SimpleMatrix D = new SimpleMatrix( computeDiagonalMatrix() );
-        System.out.println( pathType.getName() );
         return (D.invert()
                 .mult( A )).transpose();
     }
@@ -79,36 +133,49 @@ public class RWRHandler {
     }
 
     public void outputFlux() {
-        File file = new File( String.format( "RWR Results\\%s edge fluxes", pathType.getName() ) );
+        System.out.println("Begin " + pathType.getName());
+        File file = new File( String.format( "RWRResults\\%s edge fluxes.txt", pathType.getName() ) );
         //calculate fluxes and sort
-        ArrayList<org.graphstream.graph.Edge> edges = new ArrayList<>( pathType.getGraph().getEdgeSet() );
+        ArrayList<EdgeWrapper> edges = new ArrayList<>(  );
+        int toCalc = pathType.getGraph().getEdgeSet().size();
+        for ( Edge edge : pathType.getGraph().getEdgeSet() ) {
+//            System.out.println(toCalc + " left...");
+            edges.add( new EdgeWrapper( edge ) );
+            edges.get( edges.size() - 1 ).setFlux( calculateFlux( edges.get( edges.size() - 1 ) ) );
+            toCalc--;
+        }
+
         edges = edges.stream().sorted( new Comparator<>() {
             @Override
-            public int compare( Edge o1, Edge o2 ) {
-                return ( int ) ( calculateFlux( o1 ) - calculateFlux( o2 ) );
+            public int compare( EdgeWrapper o1, EdgeWrapper o2 ) {
+//                return ( int ) ( o1.getFlux() - o2.getFlux() );
+                return Double.compare( o1.getFlux(), o2.getFlux() );
             }
         } ).collect( Collectors.toCollection(ArrayList::new));
         try {
             if ( file.exists() ) file.delete();
             file.createNewFile();
             FileWriter fileWriter = new FileWriter( file );
-            fileWriter.write( "tail\thead\tedge flux" );
-            for ( Edge edge : edges ) {
-                fileWriter.write( String.format( "%s\t%s\t%s\n", edge.getSourceNode(), edge.getTargetNode(), calculateFlux( edge ) ) );
+            fileWriter.write( "tail\thead\tedge flux\n" );
+            for ( EdgeWrapper edge : edges ) {
+                fileWriter.write( String.format( "%s\t%s\t%s\n", edge.getActualEdge().getSourceNode(), edge.getActualEdge().getTargetNode(), edge.getFlux() ) );
             }
         } catch ( Exception e ) {
             e.printStackTrace();
         }
+        System.out.println("Finished " + pathType.getName());
     }
 
-    private double calculateFlux(org.graphstream.graph.Edge edge) {
+    private double calculateFlux(EdgeWrapper edge) {
         SimpleMatrix p = computePVector();
-        int weight = ( Integer ) edge.getSourceNode().getAttribute( "weight" );
-        int u = pathType.getGraph().getNode( edge.getSourceNode() ).getIndex();
-        int v = pathType.getGraph().getNode( edge.getTargetNode() ).getIndex();
+        int weight = 1;// ( Integer ) edge.getSourceNode().getAttribute( "weight" );
+        int u = edge.getActualEdge().getSourceNode().getIndex();
+        int v = edge.getActualEdge().getTargetNode().getIndex();
         int outDegree = pathType.getGraph().getNode( u ).getOutDegree();
         double pu = p.get( u );
-        return (pu * weight) / (outDegree);
+        double flux = (pu * weight) / (outDegree);
+        edge.setFlux( flux );
+        return flux;
     }
 
 

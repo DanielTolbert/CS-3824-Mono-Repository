@@ -1,4 +1,6 @@
 import igraph as ig
+import matplotlib.pyplot as plt
+import time
 
 global_graph = ig.Graph()
 
@@ -11,7 +13,7 @@ def graph_setup_pathlinker(file_path):
         edge_set = set(())
         v_no = 0
         for line in f:
-            if line_no > 200:
+            if line_no > 20000:
                 break
             if line_no > 1:
                 info_array = line.split("\t")
@@ -77,15 +79,62 @@ def move_nodes():
     return q_highest - q_starting
 
 
+def move_nodes_fast():
+    queue = list(global_graph.vs)
+    q_starting = compute_modularity()
+    q_current = q_starting
+    q_highest = q_current
+    while len(queue) > 0:
+        node_u = queue.pop()
+        starting_community = global_graph.vs[node_u.index]["community"]
+        best_community = starting_community
+        for node_v in node_u.neighbors():
+            global_graph.vs[node_u.index]["community"] = global_graph.vs[node_v.index]["community"]  # move communities
+            q_current = compute_modularity()
+            if q_current > q_highest:
+                q_highest = q_current
+                best_community = global_graph.vs[node_v.index]["community"]
+            else:
+                global_graph.vs[node_u.index]["community"] = starting_community  # retain community
+        global_graph.vs[node_u.index]["community"] = best_community
+    return q_highest - q_starting
+
+
 def calculate_modules():
     return len(set(global_graph.vs["community"]))
 
 
+def plot_info(x1, y1, x_name, y_name, x2, y2, legend):
+    plt.scatter(x1, y1, c="blue", linewidths=2, marker="x", edgecolors="blue")
+    plt.plot(x1, y1, c="blue", label=legend[0])
+    plt.scatter(x2, y2, c="red", linewidths=2, marker="o", edgecolors="red")
+    plt.plot(x2, y2, c="red", label=legend[1])
+    plt.xlabel(x_name)
+    plt.ylabel(y_name)
+    plt.legend()
+    plt.show()
+
+
 def louvain(threshold):
+    start_time = time.time()
     delta_q = 1
     prev_q = 0
     while abs(delta_q) >= threshold:
-        delta_q = move_nodes() - prev_q
+        curr_q = move_nodes()
+        print("{}: {}".format(curr_q, time.time() - start_time))
+        delta_q = curr_q - prev_q
+        prev_q = prev_q + delta_q
+    return prev_q
+
+
+def leiden():
+    start_time = time.time()
+    delta_q = 1
+    prev_q = 0
+    while abs(delta_q) >= threshold:
+        curr_q = move_nodes_fast()
+        print("{}: {}".format(curr_q, time.time() - start_time))
+        delta_q = curr_q - prev_q
         prev_q = prev_q + delta_q
     return prev_q
 
@@ -93,24 +142,21 @@ def louvain(threshold):
 def compute_modularity():
     summation = 0
     m = calculate_modules()
-    return cluster_graph()
-    # for edge in global_graph.es:
-    #     node_u = edge.source_vertex
-    #     node_v = edge.target_vertex
-    #     summation = summation + (1 - ((degree_of(node_u) * degree_of(node_v)) / (2 * m))) \
-    #                 * kronecker_delta(index_of_module(community_of_node(node_u)),
-    #                                   index_of_module(community_of_node(node_v)))
-    # return (summation / (2 * m) * kronecker_delta(summation, global_graph.es[0])) + cluster_graph()
+    for edge in global_graph.es:
+        node_u = edge.source_vertex
+        node_v = edge.target_vertex
+        summation = summation + (1 - ((degree_of(node_u) * degree_of(node_v)) / (2 * m))) \
+                    * kronecker_delta(index_of_module(community_of_node(node_u)),
+                                      index_of_module(community_of_node(node_v)))
+    return (summation / (2 * m) * kronecker_delta(summation, global_graph.es[0])) + cluster_graph()
 
 
 if __name__ == '__main__':
-    # global_graph = ig.Graph()
-    # global_graph.add_vertex(name="a", community=1)
-    # global_graph.add_vertex(name="b", community=1)
-    # global_graph.add_vertex(name="c", community=2)
-    # global_graph.add_edges([("a", "b"), ("b", "c"), ("c", "a")])
-    global_graph = graph_setup_pathlinker("Networks/pathlinker-human-network.txt")
-    # louvain_part = global_graph.community_multilevel(weights=None)
-    # print(global_graph.modularity(louvain_part, global_graph.vs["community"]))
-    print(calculate_modules())
-    print(louvain(0.001))
+    louvain_x = [110.6480507850647, 221.54419326782227, 330.93995904922485, 446.01049399375916, 558.342823266983]
+    louvain_y = [0.40436079756885596, 0.09717399090615686, 0.017188242531280484, 0.002705011744411623,
+                 0.0003351510142636238]
+
+    leiden_x = [0.2349989414215088, 0.4419996738433838, 0.6219985485076904, 0.7959973812103271, 1.009997844696045]
+    leiden_y = [0.0011905233608744336, 0.002497195707282347, 0.010413743257717257, 0.06155359249552454,
+                0.011316657494027133]
+    plot_info(louvain_x, louvain_y, "Time (sec)", "Change in Modularity / CPM", leiden_x, leiden_y, ["Louvain", "Leiden"])

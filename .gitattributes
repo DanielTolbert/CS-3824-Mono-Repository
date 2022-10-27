@@ -1,0 +1,4 @@
+.obo filter=lfs diff=lfs merge=lfs -text
+.gaf filter=lfs diff=lfs merge=lfs -text
+Project[[:space:]]3/venv/GeneOntology/go.obo filter=lfs diff=lfs merge=lfs -text
+Project[[:space:]]3/venv/GeneOntology/goa_human.gaf filter=lfs diff=lfs merge=lfs -text
